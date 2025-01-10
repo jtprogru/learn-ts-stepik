@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 
 "on":
   push:
@@ -21,6 +21,14 @@ jobs:
         id: test
         run: |
           npm run test
+        continue-on-error: true
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: ./reports
 
       - name: Build
         if: steps.test.outcome == 'success'
