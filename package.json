@@ -1,0 +1,20 @@
+{
+    "name": "learn-ts-stepik",
+    "version": "0.1.0",
+    "description": "Learn TypeScript on Stepik",
+    "main": "main.js",
+    "scripts": {
+        "dev": "tsc -w",
+        "build": "tsc",
+        "test": "jest --config jest.config.js"
+    },
+    "keywords": [],
+    "author": "Mikhail Savin <jtprogru@gmail.com>",
+    "readme": "README.md",
+    "license": "WTFPL",
+    "devDependencies": {
+        "@types/jest": "^29.5.14",
+        "jest": "^29.7.0",
+        "ts-jest": "^29.2.5"
+    }
+}
