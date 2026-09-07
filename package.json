@@ -19,5 +19,10 @@
         "jest-html-reporter": "^4.4.2",
         "jest-junit": "^17.0.0",
         "ts-jest": "^29.2.5"
+    },
+    "overrides": {
+        "babel-plugin-istanbul": {
+            "test-exclude": "^8.0.0"
+        }
     }
 }
