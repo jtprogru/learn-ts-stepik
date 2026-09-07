@@ -22,3 +22,15 @@ export function workWithFile(fileName: string, mode: Mode): void {
             throw new Error(`Unsupported mode: ${mode}`);
     }
 }
+
+export class Animal {}
+export class Bird {}
+export class Fish {}
+
+export type Pet = Animal | Bird | Fish;
+
+export class Flying {}
+export class Swimming {}
+export class Walking {}
+
+export type Duck = Flying | Swimming | Walking;
