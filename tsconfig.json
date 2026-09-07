@@ -6,7 +6,7 @@
         "**/*test.ts",
     ],
     "compilerOptions": {
-        "target": "es2016", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+        "target": "es2017", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
         "module": "commonjs", /* Specify what module code is generated. */
         "outDir": "./dist", /* Specify an output folder for all emitted files. */
         "noEmitOnError": true, /* Disable emitting files if any type checking errors are reported. */
