@@ -9,7 +9,7 @@ install: ## Install dependencies
 	npm install
 
 install-ci: ## Install dependencies from lock file (CI)
-	npm ci
+	npm ci --no-audit --no-fund
 
 build: ## Compile TypeScript
 	npm run build
