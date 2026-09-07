@@ -2,6 +2,7 @@
 // upload-artifact. Локально они лишь пишут в ./reports и шумят в консоль.
 // Получить их локально: `make test-report` (или CI=1 npm test).
 const wantsFileReports = !!process.env.CI;
+const onGithubActions = !!process.env.GITHUB_ACTIONS;
 
 module.exports = {
   testEnvironment: 'node',
@@ -23,6 +24,10 @@ module.exports = {
     './jest.reporter.js',
     // Итоговая сводка (Test Suites / Tests / Time) — штатный репортёр Jest.
     'summary',
+    // Аннотации прямо в diff на упавших строках.
+    ...(onGithubActions ? ['github-actions'] : []),
+    // Таблица результатов в job summary — видна на странице запуска.
+    ...(onGithubActions ? ['./jest.summary-reporter.js'] : []),
     ...(wantsFileReports
       ? [
           ['jest-junit', { outputDirectory: './reports/junit', outputName: 'results.xml' }],

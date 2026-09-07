@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         name: Checkout
 
       - uses: actions/setup-node@v4
@@ -24,6 +24,8 @@ jobs:
         run: |
           make install-ci
 
+      # Таблица результатов уходит в job summary, падения — аннотациями
+      # на строках в diff. И то и другое пишут репортёры из jest.config.js.
       - name: Test
         id: test
         run: |
@@ -31,11 +33,22 @@ jobs:
         continue-on-error: true
 
       - name: Upload Test Reports
+        id: upload
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: ./reports
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Link Reports In Summary
+        if: always() && steps.upload.outputs.artifact-url != ''
+        run: |
+          {
+            echo ""
+            echo "Полный HTML-отчёт и junit XML — в артефакте [test-reports](${{ steps.upload.outputs.artifact-url }})."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build
         if: steps.test.outcome == 'success'
