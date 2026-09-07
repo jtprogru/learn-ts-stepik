@@ -11,10 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         name: Checkout
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         name: Setup Node.js
         with:
           node-version: lts/*
@@ -35,7 +35,7 @@ jobs:
       - name: Upload Test Reports
         id: upload
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-reports
           path: ./reports
