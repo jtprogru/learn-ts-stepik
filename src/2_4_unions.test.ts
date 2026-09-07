@@ -39,6 +39,6 @@ describe('workWithFile function', () => {
     });
 
     it('should throw an error for unsupported mode', () => {
-        expect(() => workWithFile(fileName, 'unsupported' as Mode)).toThrowError('Unsupported mode: unsupported');
+        expect(() => workWithFile(fileName, 'unsupported' as Mode)).toThrow('Unsupported mode: unsupported');
     });
 });
